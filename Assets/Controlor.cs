@@ -43,7 +43,9 @@ public class Controlor : MonoBehaviour {
 
 	}
 
+	public static int cpt = 0;
 	public static Hexagone getGoal() {
+		Debug.Log ("GetGoal"+cpt++);
 		Hexagone[] obs = getAllHexagone();
 		foreach (Hexagone h in obs) {
 			if (h.isGoal) {

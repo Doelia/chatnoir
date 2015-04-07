@@ -39,11 +39,9 @@ public class Cat : MonoBehaviour {
 
 	public ArrayList buildPath(Hexagone h, ArrayList path) {
 		path.Add (isOn);
-		Debug.Log ("Add "+isOn.ID);
 		
 		ArrayList pathOut = new ArrayList();
 		while (true) {
-			Debug.Log ("loop, pathCount="+path.Count);
 			if (path.Count == 0) {
 				return null;
 			}
@@ -57,15 +55,16 @@ public class Cat : MonoBehaviour {
 			path.RemoveAt(0);
 
 			if (cnode.isGoal) {
-				Debug.Log("cnode is goal");
 				return pathOut;
 			}
 
 			cnode.flag = 1;
 
 			foreach (Hexagone voisin in cnode.voisins) {
-				if (voisin.flag == 0 && !voisin.blocked)
+				if (voisin.flag == 0 && !voisin.blocked) {
 					path.Add (voisin);
+					voisin.flag = 1;
+				}
 			}
 		}
 	}
